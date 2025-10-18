@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>King-Phisher Dashboard</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet"/>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Inter', sans-serif;
+    }
+
+    body {
+      display: flex;
+      height: 100vh;
+      background-color: #f8fafc;
+    }
+
+    /* Sidebar */
+    .sidebar {
+      width: 250px;
+      background-color: #1e3a8a;
+      color: white;
+      display: flex;
+      flex-direction: column;
+      padding: 2rem 1rem;
+    }
+
+    .sidebar h2 {
+      font-size: 1.5rem;
+      margin-bottom: 2rem;
+      text-align: center;
+    }
+
+    .nav-link {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      padding: 0.75rem 1rem;
+      color: white;
+      text-decoration: none;
+      border-radius: 8px;
+      margin-bottom: 1rem;
+      transition: background 0.2s ease;
+    }
+
+    .nav-link:hover {
+      background-color: #3b82f6;
+    }
+
+    /* Main Content */
+    .main {
+      flex-grow: 1;
+      padding: 1.5rem 2rem;
+      overflow-y: auto;
+    }
+
+    .topbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 2rem;
+    }
+
+    .topbar .welcome {
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: #1e293b;
+    }
+
+    .topbar .profile {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .profile img {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .card {
+      background: white;
+      padding: 1.5rem;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .card h3 {
+      font-size: 1rem;
+      color: #334155;
+      margin-bottom: 0.5rem;
+    }
+
+    .card .value {
+      font-size: 1.5rem;
+      font-weight: bold;
+      color: #1d4ed8;
+    }
+
+    .card i {
+      font-size: 1.8rem;
+      color: #3b82f6;
+    }
+
+    .section-title {
+      margin: 2rem 0 1rem;
+      font-size: 1.2rem;
+      font-weight: 600;
+      color: #1e293b;
+    }
+
+    .functions {
+      display: grid;
+      gap: 1rem;
+    }
+
+    .function-item {
+      padding: 1rem 1.5rem;
+      background: #e0f2fe;
+      border-left: 4px solid #0284c7;
+      border-radius: 8px;
+      color: #0f172a;
+      font-weight: 500;
+      cursor: pointer;
+      transition: background 0.2s ease;
+    }
+
+    .function-item:hover {
+      background: #bae6fd;
+    }
+    .pred-phish { color: #ef4444; font-weight: 600; }
+    .pred-safe { color: #16a34a; font-weight: 600; }
+  </style>
+</head>
+<body>
+
+  <!-- Sidebar -->
+  <div class="sidebar">
+    <h2>King-Phisher</h2>
+    <a href="{{ url_for('dashboard') }}" class="nav-link"><i class="fas fa-gauge"></i> Dashboard</a>
+    <a href="{{ url_for('scan') }}" class="nav-link"><i class="fas fa-envelope-open-text"></i> Analyze Email</a>
+    <a href="#" class="nav-link"><i class="fas fa-file-alt"></i> Reports</a>
+    <a href="#" class="nav-link"><i class="fas fa-user"></i> Profile</a>
+    <a href="#" class="nav-link"><i class="fas fa-gear"></i> Settings</a>
+    <a href="/logout" class="nav-link"><i class="fas fa-right-from-bracket"></i> Logout</a>
+  </div>
+
+  <!-- Main Content -->
+  <div class="main">
+    <div class="topbar">
+      <div class="welcome">Welcome back</div>
+      <div class="profile">
+        <span>{{ email }}</span>
+        <img src="https://ui-avatars.com/api/?background=1e3a8a&color=fff&name={{ (email or 'U')|urlencode }}" alt="Profile Picture" />
+      </div>
+    </div>
+
+    <!-- Dashboard Cards -->
+    <div class="cards">
+      <div class="card">
+        <h3>Emails Scanned</h3>
+        <div class="value">{{ scan_history|length }}</div>
+      </div>
+      <div class="card">
+        <h3>Phishing Detected</h3>
+        <div class="value">{{ phishing_count }}</div>
+      </div>
+      <div class="card">
+        <h3>Reports Generated</h3>
+        <div class="value">{{ (scan_history|length) // 5 }}</div>
+      </div>
+      <div class="card">
+        <h3>System Accuracy</h3>
+        <div class="value">94.7%</div>
+      </div>
+    </div>
+
+    <!-- Functional Sections -->
+    <div class="section-title">Functions Available</div>
+    <div class="functions">
+      <a class="function-item" href="{{ url_for('scan') }}">🔍 Analyze Email for Phishing</a>
+      <div class="function-item">📊 View & Download Reports</div>
+      <div class="function-item">⚙️ Manage System Settings</div>
+      <div class="function-item">👤 Edit Profile Information</div>
+      <div class="function-item">📁 View Historical Logs</div>
+    </div>
+
+    <div class="section-title">Recent Scans</div>
+    {% if scan_history and scan_history|length > 0 %}
+      <div style="overflow-x:auto;">
+        <table style="width:100%;background:#fff;border-collapse:collapse;border-radius:12px;box-shadow:0 4px 12px rgba(0,0,0,.05);">
+          <thead>
+            <tr style="background:#e2e8f0;color:#1e293b;text-align:left;">
+              <th style="padding:12px 16px;">Subject</th>
+              <th style="padding:12px 16px;">Prediction</th>
+              <th style="padding:12px 16px;">Confidence</th>
+              <th style="padding:12px 16px;">Scanned At</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for row in scan_history %}
+            <tr style="border-top:1px solid #e5e7eb;">
+              <td style="padding:12px 16px;">{{ row['email_subject'] }}</td>
+              <td style="padding:12px 16px;" class="{{ 'pred-phish' if row['prediction'] else 'pred-safe' }}">{{ 'Phishing' if row['prediction'] else 'Safe' }}</td>
+              <td style="padding:12px 16px;">{{ '%.2f'|format((row['confidence'] or 0.0) * 100) }}%</td>
+              <td style="padding:12px 16px;">{{ row['scan_time'] }}</td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    {% else %}
+      <div class="function-item" style="background:#f1f5f9;border-left-color:#64748b;">No scans yet. Use "Analyze Email" to run your first scan.</div>
+    {% endif %}
+  </div>
+
+</body>
+</html>

@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>King-Phisher</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+<style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+  background: linear-gradient(135deg, #6ee7b7, #3b82f6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  padding: 20px;
+}
+
+/* Phishing Container */
+.phishing-container {
+  background: white;
+  padding: 2.5rem;
+  border-radius: 16px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 500px;
+  border-top: 4px solid #3b82f6;
+  transition: transform 0.3s ease;
+}
+
+.phishing-container:hover {
+  transform: translateY(-5px);
+}
+
+/* Header Section */
+.security-icon {
+  background: #e6f0ff;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto 1.5rem;
+}
+
+.security-icon i {
+  color: #3b82f6;
+  font-size: 1.8rem;
+}
+
+.phishing-title {
+  font-size: 1.8rem;
+  color: #2d3748;
+  text-align: center;
+  margin-bottom: 0.5rem;
+  font-weight: 700;
+}
+
+.phishing-subtitle {
+  color: #718096;
+  text-align: center;
+  margin-bottom: 2rem;
+  font-size: 1rem;
+}
+
+/* Form Elements */
+.phishing-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-group label {
+  margin-bottom: 0.5rem;
+  color: #4a5568;
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+.form-group input,
+.form-group select {
+  padding: 1rem;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+}
+
+.form-group input:focus,
+.form-group select:focus {
+  outline: none;
+  border-color: #3b82f6;
+  box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.2);
+}
+
+/* Button */
+.phishing-button {
+  width: 100%;
+  padding: 1rem;
+  background: linear-gradient(135deg, #3b82f6, #2563eb);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+  transition: all 0.3s ease;
+  margin-top: 1rem;
+}
+
+.phishing-button:hover {
+  background: linear-gradient(135deg, #2563eb, #1d4ed8);
+  box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
+  transform: scale(1.02);
+}
+
+.phishing-button.loading {
+  opacity: 0.8;
+  cursor: not-allowed;
+}
+
+.phishing-button i {
+  font-size: 1.1rem;
+}
+
+/* Result Message */
+.result-message {
+  padding: 1.2rem;
+  border-radius: 8px;
+  margin: 1.5rem 0 0;
+  font-size: 1rem;
+  text-align: center;
+  font-weight: 600;
+}
+
+.result-message.hidden {
+  display: none;
+}
+
+.result-message.safe {
+  background: #d1fae5;
+  color: #065f46;
+}
+
+.result-message.phishing {
+  background: #fee2e2;
+  color: #b91c1c;
+}
+
+.result-message.error {
+  background: #fef3c7;
+  color: #92400e;
+}
+
+/* Spinner */
+.spinner {
+  display: none;
+  border: 3px solid rgba(255, 255, 255, 0.3);
+  border-top: 3px solid #ffffff;
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  animation: spin 1s linear infinite;
+  margin-left: 10px;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Responsive Design */
+@media (max-width: 480px) {
+  .phishing-container {
+    padding: 1.5rem;
+  }
+  
+  .phishing-title {
+    font-size: 1.5rem;
+  }
+}
+</style>
+  <div class="phishing-container animate__animated animate__fadeInUp">
+    <div class="security-icon">
+      <i class="fas fa-envelope-shield"></i>
+    </div>
+    
+    <h1 class="phishing-title">Email Phishing Detector</h1>
+    <p class="phishing-subtitle">Enter email details to check if it's phishing or safe</p>
+    <div style="display:flex; gap:10px; justify-content:center; margin: 0 0 16px 0;">
+      <a href="/" style="padding:.6rem 1rem; border-radius:8px; background:#2563eb; color:#fff; text-decoration:none; font-weight:600;">Login</a>
+      <a href="/register.html" style="padding:.6rem 1rem; border-radius:8px; background:#10b981; color:#fff; text-decoration:none; font-weight:600;">Register</a>
+    </div>
+    
+    <form id="phishingForm" class="phishing-form">
+      <div class="form-group">
+        <label for="feature1">URL Length</label>
+        <input type="number" id="feature1" name="feature1" placeholder="Enter URL length" required>
+      </div>
+      
+      <div class="form-group">
+        <label for="feature2">Number of Special Characters</label>
+        <input type="number" id="feature2" name="feature2" placeholder="Enter special character count" required>
+      </div>
+      
+      <div class="form-group">
+        <label for="feature3">Domain Age (days)</label>
+        <input type="number" id="feature3" name="feature3" placeholder="Enter domain age" required>
+      </div>
+      
+      <div class="form-group">
+        <label for="feature4">HTTPS Presence</label>
+        <select id="feature4" name="feature4" required>
+          <option value="">Select option</option>
+          <option value="1">Present</option>
+          <option value="0">Absent</option>
+        </select>
+      </div>
+      
+      <button type="submit" class="phishing-button">
+        <span>Check Email</span>
+        <i class="fas fa-search"></i>
+      </button>
+    </form>
+    
+    <div id="result" class="result-message hidden"></div>
+  </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const form = document.getElementById('phishingForm');
+        const resultDiv = document.getElementById('result');
+        const submitButton = document.querySelector('.phishing-button');
+        
+        form.addEventListener('submit', async function(e) {
+          e.preventDefault();
+          
+          // Show loading state
+          submitButton.innerHTML = '<span>Analyzing...</span><div class="spinner"></div>';
+          submitButton.classList.add('loading');
+          resultDiv.classList.add('hidden');
+          
+          const formData = new FormData(form);
+          const data = Object.fromEntries(formData);
+          
+          try {
+            const response = await fetch('http://localhost:5000/predict', {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify(data)
+            });
+            
+            const result = await response.json();
+            
+            if (result.error) {
+              showResult('error', `Error: ${result.error}`);
+            } else {
+              const isPhishing = result.prediction === 1;
+              showResult(isPhishing ? 'phishing' : 'safe', 
+                        isPhishing ? 'Phishing Email Detected!' : 'Email is Safe');
+            }
+          } catch (error) {
+            showResult('error', `Error: ${error.message}`);
+          } finally {
+            submitButton.innerHTML = '<span>Check Email</span><i class="fas fa-search"></i>';
+            submitButton.classList.remove('loading');
+          }
+        });
+        
+        function showResult(type, message) {
+          resultDiv.className = `result-message ${type}`;
+          resultDiv.textContent = message;
+          resultDiv.classList.remove('hidden');
+          
+          // Add animation
+          resultDiv.classList.add('animate__animated', 'animate__fadeIn');
+          setTimeout(() => {
+            resultDiv.classList.remove('animate__fadeIn');
+          }, 1000);
+        }
+      });
+  </script>
+</body>
+</html>

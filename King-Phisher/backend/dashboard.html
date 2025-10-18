@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>King-Phisher Dashboard</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Inter', sans-serif;
+    }
+
+    body {
+      display: flex;
+      height: 100vh;
+      background-color: #f8fafc;
+    }
+
+    /* Sidebar */
+    .sidebar {
+      width: 250px;
+      background-color: #1e3a8a;
+      color: white;
+      display: flex;
+      flex-direction: column;
+      padding: 2rem 1rem;
+    }
+
+    .sidebar h2 {
+      font-size: 1.5rem;
+      margin-bottom: 2rem;
+      text-align: center;
+    }
+
+    .nav-link {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      padding: 0.75rem 1rem;
+      color: white;
+      text-decoration: none;
+      border-radius: 8px;
+      margin-bottom: 1rem;
+      transition: background 0.2s ease;
+    }
+
+    .nav-link:hover {
+      background-color: #3b82f6;
+    }
+
+    /* Main Content */
+    .main {
+      flex-grow: 1;
+      padding: 1.5rem 2rem;
+      overflow-y: auto;
+    }
+
+    .topbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 2rem;
+    }
+
+    .topbar .welcome {
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: #1e293b;
+    }
+
+    .topbar .profile {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .profile img {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .card {
+      background: white;
+      padding: 1.5rem;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .card h3 {
+      font-size: 1rem;
+      color: #334155;
+      margin-bottom: 0.5rem;
+    }
+
+    .card .value {
+      font-size: 1.5rem;
+      font-weight: bold;
+      color: #1d4ed8;
+    }
+
+    .card i {
+      font-size: 1.8rem;
+      color: #3b82f6;
+    }
+
+    .section-title {
+      margin: 2rem 0 1rem;
+      font-size: 1.2rem;
+      font-weight: 600;
+      color: #1e293b;
+    }
+
+    .functions {
+      display: grid;
+      gap: 1rem;
+    }
+
+    .function-item {
+      padding: 1rem 1.5rem;
+      background: #e0f2fe;
+      border-left: 4px solid #0284c7;
+      border-radius: 8px;
+      color: #0f172a;
+      font-weight: 500;
+      cursor: pointer;
+      transition: background 0.2s ease;
+    }
+
+    .function-item:hover {
+      background: #bae6fd;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Sidebar -->
+  <div class="sidebar">
+    <h2>King-Phisher</h2>
+    <a href="dashboard.html" class="nav-link"><i class="fas fa-gauge"></i> Dashboard</a>
+    <a href="#" class="nav-link"><i class="fas fa-envelope-open-text"></i> Analyze Email</a>
+    <a href="templates/dashboard.html" class="nav-link"><i class="fas fa-file-alt"></i> Reports</a>
+    <a href="templates/profile.html" class="nav-link"><i class="fas fa-user"></i> Profile</a>
+    <a href="templates/settings.html" class="nav-link"><i class="fas fa-gear"></i> Settings</a>
+    <a href="templates/index.html" class="nav-link"><i class="fas fa-right-from-bracket"></i> Logout</a>
+  </div>
+
+  <!-- Main Content -->
+  <div class="main">
+    <div class="topbar">
+      <div class="welcome">Welcome, Analyst!</div>
+      <div class="profile">
+        <span>John Doe</span>
+        <img src="" alt="Profile Picture" />
+      </div>
+    </div>
+
+    <!-- Dashboard Cards -->
+    <div class="cards">
+      <div class="card">
+        <h3>Emails Scanned</h3>
+        <div class="value">upadate the statistics</div>
+      </div>
+      <div class="card">
+        <h3>Phishing Detected</h3>
+        <div class="value">upadate the statistics</div>
+      </div>
+      <div class="card">
+        <h3>Reports Generated</h3>
+        <div class="value">upadate the statistics</div>
+      </div>
+      <div class="card">
+        <h3>System Accuracy</h3>
+        <div class="value">upadate the statistics</div>
+      </div>
+    </div>
+
+    <!-- Functional Sections -->
+    <div class="section-title">Functions Available</div>
+    <div class="functions">
+      <div class="function-item">🔍 Analyze Email for Phishing</div>
+      <div class="function-item">📊 View & Download Reports</div>
+      <div class="function-item">⚙️ Manage System Settings</div>
+      <div class="function-item">👤 Edit Profile Information</div>
+      <div class="function-item">📁 View Historical Logs</div>
+    </div>
+  </div>
+
+</body>
+</html>
