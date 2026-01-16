@@ -1,0 +1,74 @@
+/* King-Phisher Extension Styles */
+
+.kingphisher-banner {
+    padding: 16px;
+    margin: 16px 0;
+    border-radius: 12px;
+    border-left: 4px solid;
+    background: white;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    animation: slideIn 0.3s ease;
+}
+
+.kingphisher-banner.danger {
+    border-color: #ef4444;
+    background: linear-gradient(135deg, #fee2e2, #fecaca);
+}
+
+.kingphisher-banner.safe {
+    border-color: #16a34a;
+    background: linear-gradient(135deg, #dcfce7, #bbf7d0);
+}
+
+.kingphisher-close {
+    background: none;
+    border: none;
+    font-size: 20px;
+    cursor: pointer;
+    color: #64748b;
+    padding: 4px 8px;
+    border-radius: 4px;
+    transition: all 0.2s;
+}
+
+.kingphisher-close:hover {
+    background: rgba(0, 0, 0, 0.1);
+    color: #0f172a;
+}
+
+#kingphisher-scan-btn {
+    display: inline-flex !important;
+    align-items: center;
+    gap: 6px;
+    padding: 8px 16px !important;
+    background: linear-gradient(135deg, #1e3a8a, #3b82f6) !important;
+    color: white !important;
+    border-radius: 8px !important;
+    font-weight: 600 !important;
+    transition: all 0.2s !important;
+}
+
+#kingphisher-scan-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(30, 58, 138, 0.3) !important;
+}
+
+.kingphisher-icon {
+    font-size: 16px;
+}
+
+.kingphisher-text {
+    font-size: 13px;
+}
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
