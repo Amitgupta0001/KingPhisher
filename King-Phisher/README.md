@@ -18,24 +18,6 @@
 
 ---
 
-## 📋 Table of Contents
-
-- [Overview](#-overview)
-- [Features](#-features)
-- [Demo](#-demo)
-- [Architecture](#-architecture)
-- [Installation](#-installation)
-- [Configuration](#-configuration)
-- [Usage](#-usage)
-- [API Documentation](#-api-documentation)
-- [Browser Extension](#-browser-extension)
-- [Testing](#-testing)
-- [Deployment](#-deployment)
-- [Contributing](#-contributing)
-- [License](#-license)
-
----
-
 ## 🎯 Overview
 
 **King-Phisher** is a production-ready, AI-powered phishing detection system that combines machine learning, real-time threat intelligence, and modern web technologies to protect users from phishing attacks. Built with Flask, scikit-learn, and integrated with multiple threat intelligence sources.
