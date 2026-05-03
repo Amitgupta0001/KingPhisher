@@ -107,6 +107,3 @@ uvicorn main:app --reload --port 8000
 
 ## 🛡️ Security Disclosure
 This project is developed for **educational and defensive purposes only**. The ML models are trained on historical phishing data to provide a demonstration of AI-driven security.
-
----
-*Created for High-Impact Portfolios and FAANG Technical Reviews.* 🚀
