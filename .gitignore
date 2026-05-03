@@ -1,0 +1,55 @@
+# --- Python ---
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+.venv/
+pip-log.txt
+pip-delete-this-directory.txt
+.toast
+.ipynb_checkpoints/
+.pytest_cache/
+
+# --- ML Artifacts ---
+# Ignore heavy binary model files
+backend/model/*.pkl
+!backend/model/__init__.py
+backend/model/email_model_info.json
+
+# --- Extension ---
+extension/.DS_Store
+extension/assets/*.tmp
+
+# --- Databases & Data ---
+# Keep datasets for portability, ignore local database instances
+data/*.db
+*.db
+*.sqlite3
+!data/*.csv
+
+# --- Environments & Secrets ---
+.env
+.env.*
+*.env
+SECRET_KEY
+
+# --- IDEs & Editors ---
+.vscode/
+.idea/
+*.swp
+*.swo
+.project
+.settings/
+
+# --- System Files ---
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# --- Logs ---
+*.log
+app.log
+uvicorn.log

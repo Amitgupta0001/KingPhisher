@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>King Phisher AI</title>
+    <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Hero Section -->
+        <div class="hero">
+            <div class="hero-content">
+                <img src="../assets/icon128.png" alt="Hero Logo">
+                <div class="hero-text">
+                    <h2>King Phisher</h2>
+                    <p>Advanced AI Protection</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Header -->
+        <header>
+            <div class="logo">
+                <img src="../assets/icon48.png" alt="Logo">
+                <h1>King Phisher <span>AI</span></h1>
+            </div>
+            <div id="user-status" class="user-status">
+                <span id="user-email" class="hidden"></span>
+                <button id="logoutBtn" class="hidden">Logout</button>
+            </div>
+        </header>
+
+        <div id="messageBox" class="message-box hidden"></div>
+
+        <!-- Navigation -->
+        <nav>
+            <button class="nav-btn active" data-tab="scan">🛡️ Scan</button>
+            <button class="nav-btn" data-tab="history">📋 History</button>
+            <button id="nav-login" class="nav-btn" data-tab="login">👤 Account</button>
+        </nav>
+
+        <!-- Main Content -->
+        <main>
+            <!-- Scan Tab -->
+            <section id="scan" class="tab-pane active">
+                <div class="input-group">
+                    <input type="text" id="urlInput" placeholder="Paste suspicious URL here...">
+                    <button id="scanBtn">Analyze</button>
+                </div>
+
+                <div id="resultCard" class="result-card hidden">
+                    <div class="result-header">
+                        <span id="resultIcon">🛡️</span>
+                        <h2 id="resultTitle">Safe</h2>
+                    </div>
+                    <p id="resultText">This URL appears to be safe.</p>
+                    <div class="confidence-container">
+                        <label>Confidence</label>
+                        <div class="progress-bar">
+                            <div id="confidenceLevel" class="level"></div>
+                        </div>
+                    </div>
+                    <div class="explanation">
+                        <strong>Why?</strong>
+                        <p id="explanationText"></p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- History Tab -->
+            <section id="history" class="tab-pane">
+                <ul id="historyList">
+                    <!-- History items injected here -->
+                </ul>
+            </section>
+
+            <!-- Login Tab -->
+            <section id="login" class="tab-pane">
+                <div class="auth-form" id="loginForm">
+                    <h2>Login</h2>
+                    <input type="email" id="loginEmail" placeholder="Email">
+                    <input type="password" id="loginPass" placeholder="Password">
+                    <button id="doLoginBtn">Login</button>
+                    <p>Don't have an account? <a href="#" id="showRegister">Register</a></p>
+                </div>
+
+                <div class="auth-form hidden" id="registerForm">
+                    <h2>Create Account</h2>
+                    <input type="email" id="regEmail" placeholder="Email">
+                    <input type="password" id="regPass" placeholder="Password">
+                    <button id="doRegisterBtn">Register</button>
+                    <p>Already have an account? <a href="#" id="showLogin">Login</a></p>
+                </div>
+            </section>
+        </main>
+
+        <!-- Footer -->
+        <footer>
+            <p>Protected by <span>King Phisher AI v2.1</span></p>
+        </footer>
+    </div>
+    <script src="popup.js"></script>
+</body>
+</html>
